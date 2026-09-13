@@ -1,0 +1,325 @@
+/* ==========================================================================
+   Mitisha Surana — personal site
+   Contents
+     1. Design tokens
+     2. Base / reset
+     3. Layout helpers
+     4. Typography
+     5. Navigation
+     6. Hero
+     7. Sections
+     8. Experience timeline
+     9. Doctoral research
+    10. Skills
+    11. Patents & publications
+    12. Education
+    13. Footer
+    14. Wafer graphic
+    15. Responsive
+    16. Reduced motion
+   ========================================================================== */
+
+
+/* 1. Design tokens ------------------------------------------------------- */
+
+:root{
+  --paper: #F5F6F1;
+  --paper-alt: #EAECE4;
+  --ink: #1B1E1F;
+  --muted: #585D62;
+  --line: #DADDD3;
+  --blue: #2F5C8A;
+  --gold: #B4823A;
+  --violet: #77599E;
+
+  --serif: 'IBM Plex Serif', Georgia, serif;
+  --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+
+/* 2. Base / reset -------------------------------------------------------- */
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--blue); text-decoration: none; }
+a:hover,
+a:focus-visible{ text-decoration: underline; text-underline-offset: 3px; }
+
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; }
+
+
+/* 3. Layout helpers ------------------------------------------------------ */
+
+.wrap{ max-width: 940px; margin: 0 auto; padding: 0 28px; }
+.prose{ max-width: 640px; }
+
+
+/* 4. Typography ---------------------------------------------------------- */
+
+h1, h2, h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+}
+
+p{ margin: 0 0 1em 0; }
+
+ul{ margin: 0; padding: 0; list-style: none; }
+
+
+/* 5. Navigation ---------------------------------------------------------- */
+
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  background: rgba(245, 246, 241, 0.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.mark{
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav-links{ display: flex; gap: 26px; overflow-x: auto; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar{ display: none; }
+
+.nav-links a{
+  color: var(--ink);
+  font-size: 0.92rem;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible{
+  color: var(--blue);
+  border-color: var(--blue);
+  text-decoration: none;
+}
+
+
+/* 6. Hero ---------------------------------------------------------------- */
+
+.hero{ padding: 64px 0 30px; }
+
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1{ font-size: 3.1rem; line-height: 1.05; margin-bottom: 14px; }
+.hero .role{ font-size: 1.2rem; color: var(--muted); margin-bottom: 22px; max-width: 30ch; }
+.hero .bio{ max-width: 52ch; }
+
+.stat-row{ display: flex; gap: 30px; margin: 26px 0 30px; flex-wrap: wrap; }
+.stat{ font-family: var(--mono); }
+.stat b{ display: block; font-size: 1.3rem; font-weight: 500; color: var(--ink); }
+.stat span{ font-size: 0.82rem; color: var(--muted); }
+
+.contact-links{ display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.95rem; }
+.contact-links .locale{ color: var(--muted); }
+
+.wafer-fig{ text-align: center; }
+.wafer-fig svg{ width: 100%; max-width: 340px; height: auto; }
+.wafer-caption{
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 30ch;
+  margin: 14px auto 0;
+}
+
+
+/* 7. Sections ------------------------------------------------------------ */
+
+.section{ padding: 88px 0; border-top: 1px solid var(--line); }
+.section h2{ font-size: 1.7rem; margin-bottom: 28px; }
+.section-lede{ color: var(--muted); margin-bottom: 40px; max-width: 56ch; }
+
+
+/* 8. Experience timeline ------------------------------------------------- */
+
+.timeline{
+  border-left: 2px solid var(--line);
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.role-block{ position: relative; }
+
+.role-block::before{
+  content: '';
+  position: absolute;
+  left: -39px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--blue);
+}
+
+.role-block .when{
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.role-block h3{ font-size: 1.2rem; margin-bottom: 2px; }
+.role-block .place{ color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.role-block ul{ display: flex; flex-direction: column; gap: 10px; max-width: 66ch; }
+.role-block li{ padding-left: 20px; position: relative; }
+.role-block li::before{ content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+
+/* 9. Doctoral research --------------------------------------------------- */
+
+.research-meta{ font-size: 0.95rem; color: var(--muted); margin-bottom: 36px; }
+.research-grid{ display: flex; flex-direction: column; gap: 34px; }
+.research-item{ border-left: 3px solid var(--gold); padding-left: 24px; }
+.research-item h3{ font-size: 1.1rem; margin-bottom: 8px; }
+.research-item p{ max-width: 66ch; color: var(--ink); }
+.research-item p:last-child{ margin-bottom: 0; }
+
+
+/* 10. Skills ------------------------------------------------------------- */
+
+.skills-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+.skills-grid h3{
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tag-list{ display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tag{
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+
+/* 11. Patents & publications --------------------------------------------- */
+
+.work-group{ margin-bottom: 44px; }
+.work-group:last-child{ margin-bottom: 0; }
+
+.work-group h3{
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.work-row{
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-row:first-child{ border-top: 1px solid var(--line); }
+.work-row .year{ font-family: var(--mono); font-size: 0.85rem; color: var(--muted); padding-top: 2px; }
+.work-row .citation{ font-size: 0.95rem; }
+.work-row .citation em{ font-style: italic; color: var(--muted); }
+.work-row a.patent-link{ font-size: 0.85rem; margin-left: 8px; white-space: nowrap; }
+
+
+/* 12. Education ---------------------------------------------------------- */
+
+.edu-grid{ display: flex; flex-direction: column; gap: 26px; }
+
+.edu-item{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+
+.edu-item:last-child{ border-bottom: none; padding-bottom: 0; }
+.edu-item h3{ font-size: 1.05rem; margin-bottom: 4px; }
+.edu-item .school{ color: var(--muted); font-size: 0.95rem; }
+
+.edu-item .meta{
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+/* 13. Footer ------------------------------------------------------------- */
+
+footer{ padding: 90px 0 60px; }
+footer h2{ font-size: 1.9rem; margin-bottom: 18px; }
+footer .footer-lede{ color: var(--muted); }
+footer .contact-links{ margin-top: 10px; font-size: 1.05rem; }
+footer .fine{ margin-top: 60px; font-size: 0.82rem; color: var(--muted); }
+
+
+/* 14. Wafer graphic ------------------------------------------------------ */
+
+.wafer-cell{ transition: fill 1.3s cubic-bezier(.4, 0, .2, 1); }
+
+
+/* 15. Responsive --------------------------------------------------------- */
+
+@media (max-width: 780px){
+  .hero-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .hero{ padding-top: 44px; }
+  .hero h1{ font-size: 2.3rem; }
+  .wafer-fig{ order: -1; max-width: 240px; margin: 0 auto; }
+  .skills-grid{ grid-template-columns: 1fr; gap: 32px; }
+  .section{ padding: 64px 0; }
+  .work-row{ grid-template-columns: 48px 1fr; }
+  nav{ padding: 14px 20px; }
+  .nav-links{ gap: 18px; }
+}
+
+
+/* 16. Reduced motion ----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  .wafer-cell{ transition: none; }
+}
